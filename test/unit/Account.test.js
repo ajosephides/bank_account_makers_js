@@ -8,6 +8,13 @@ describe('Account', () => {
     expect(account.balance).toBe(1000.00)
   })
 
+  test('user can make a withdrawal', () => {
+    let account = new Account();
+    account.deposit(1000.00)
+    account.withdraw(500.00)
+    expect(account.balance).toBe(500.00)
+  })
+
 
 
 
