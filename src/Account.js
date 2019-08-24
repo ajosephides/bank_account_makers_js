@@ -14,16 +14,8 @@ module.exports = class Account {
     return this._balance;
   }
 
-  set balance(amount){
-    this._balance += amount;
-  }
-
   get transactions(){
     return this._transactions;
-  }
-
-  set transactions(transaction){
-    this._transactions.push(transaction);
   }
 
   deposit(amount) {
