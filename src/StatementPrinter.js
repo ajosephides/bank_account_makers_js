@@ -11,10 +11,12 @@ module.exports = class StatementPrinter{
     let statement = []
     let header = 'date || credit || debit || balance'
     statement.push(header)
-    this.transactions.forEach((transaction) => {
+    this.transactions.reverse().forEach((transaction) => {
       let transactionPrint = new this.transactionPrinter(transaction);
       statement.push(transactionPrint.print())
     });
-    return statement.join("\n")
+    return statement.join('\n')
   }
+
+  
 }

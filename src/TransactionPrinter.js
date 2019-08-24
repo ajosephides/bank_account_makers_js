@@ -12,7 +12,6 @@ module.exports = class TransactionPrinter{
     }
   }
 
-
   formatDate(date){
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
