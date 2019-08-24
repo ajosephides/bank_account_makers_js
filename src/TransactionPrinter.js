@@ -5,7 +5,11 @@ module.exports = class TransactionPrinter{
   }
 
   print(){
-    return `${this.formatDate(this.transaction.date)} || ${this.transaction.amount.toFixed(2)} || || ${this.transaction.balance.toFixed(2)}`
+    if (this.transaction.type == 'deposit'){
+      return `${this.formatDate(this.transaction.date)} || ${this.transaction.amount.toFixed(2)} || || ${this.transaction.balance.toFixed(2)}`
+    } else {
+      return `${this.formatDate(this.transaction.date)} || || ${this.transaction.amount.toFixed(2)} || ${this.transaction.balance.toFixed(2)}`
+    }
   }
 
 
