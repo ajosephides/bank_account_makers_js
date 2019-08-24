@@ -39,8 +39,8 @@ module.exports = class Account {
   }
 
   statement(){
-    let statementPrinter = new this.statementPrinter();
-    return statementPrinter.print(this._transactions);
+    let statementPrinter = new this.statementPrinter(this._transactions);
+    return statementPrinter.print();
   }
 }
 
