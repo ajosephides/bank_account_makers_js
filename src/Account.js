@@ -30,6 +30,8 @@ module.exports = class Account {
 
   withdraw(amount) {
     this._balance += -amount;
+    let transaction = new this.transaction(amount, 'withdrawal', this._balance)
+    this._transactions.push(transaction)
   }
 
   statement(){
