@@ -39,7 +39,6 @@ describe('Account', () => {
 
   test('statement printer is called', () => {
     account.deposit(1000.00)
-    console.log(account.statement())
     expect(account.statement()).toMatch('date || credit || debit || balance\n24/08/2019 || 1000.00 || || 1000.00')
   })
 })
