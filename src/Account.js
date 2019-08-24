@@ -1,3 +1,5 @@
+const Transaction = require('./Transaction')
+
 module.exports = class Account {
   
   constructor(transaction = Transaction) {
