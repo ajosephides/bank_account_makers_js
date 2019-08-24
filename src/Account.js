@@ -1,4 +1,5 @@
 const Transaction = require('./Transaction')
+const StatementPrinter = require('./StatementPrinter')
 
 module.exports = class Account {
   
@@ -6,6 +7,7 @@ module.exports = class Account {
     this._balance = 0;
     this._transactions = [];
     this.transaction = transaction;
+    this.statementPrinter = StatementPrinter;
   }
 
   get balance() {
@@ -37,7 +39,8 @@ module.exports = class Account {
   }
 
   statement(){
-    return 'date || credit || debit || balance'
+    let statementPrinter = new this.statementPrinter();
+    return statementPrinter.print(this._transactions);
   }
 }
 

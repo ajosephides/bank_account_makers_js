@@ -1,6 +1,13 @@
 const Account = require('../../src/Account')
 
-var transactionMock = jest.fn()
+var transactionMock = jest.fn();
+
+const mockPrint = jest.fn(() => 'date || credit || debit || balance\n24/08/2019 || 1000.00 || || 1000.00');
+jest.mock('../../src/StatementPrinter', () => {
+  return jest.fn().mockImplementation(() => {
+    return {print: mockPrint};
+  });
+});
 
 describe('Account', () => {
   let account;
@@ -19,18 +26,20 @@ describe('Account', () => {
     expect(account.balance).toBe(500.00)
   })
 
-  test('statement has the correct headings', () => {
-    expect(account.statement()).toMatch('date || credit || debit || balance')
-  })
-
-  test(`a transaction is added to the account on deposit`, () => {
+  test('a transaction is added to the account on deposit', () => {
     account.deposit(1000.00)
     expect(account.transactions).toHaveLength(1)
   })
 
-  test(`a transaction is added to the account on withdrawal`, () => {
+  test('a transaction is added to the account on withdrawal', () => {
     account.deposit(1000.00)
     account.withdraw(500.00)
     expect(account.transactions).toHaveLength(2)
+  })
+
+  test('statement printer is called', () => {
+    account.deposit(1000.00)
+    console.log(account.statement())
+    expect(account.statement()).toMatch('date || credit || debit || balance\n24/08/2019 || 1000.00 || || 1000.00')
   })
 })
