@@ -1,22 +1,28 @@
 module.exports = class Account {
-
+  
   constructor() {
-    this.balance = 0;
+    this._balance = 0;
   }
 
-  balance() {
-    return this.balance;
+  get balance() {
+    return this._balance;
+  }
+
+  set balance(amount){
+    this._balance += amount;
   }
 
   deposit(amount) {
-    this.balance += amount;
+    this._balance += amount;
   }
 
   withdraw(amount) {
-    this.balance -= amount;
+    this._balance += -amount;
+  }
+
+  statement(){
+    return 'date || credit || debit || balance'
   }
 }
-
-
 
 

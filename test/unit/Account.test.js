@@ -15,7 +15,10 @@ describe('Account', () => {
     expect(account.balance).toBe(500.00)
   })
 
-
+  test('statement has the correct headings', () => {
+    let account = new Account();
+    expect(account.statement()).toMatch('date || credit || debit || balance')
+  })
 
 
 
